@@ -6,7 +6,9 @@ class ClubsController < SecretsController
 
   def show
     @club = Club.find(params[:id])
-    require
+    if not current_student.clubs.include? @club
+      render 'public/403.html' 
+    end
   end
 
 end
